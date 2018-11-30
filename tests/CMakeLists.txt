@@ -1,14 +1,14 @@
 include(FetchContent)
 
-FetchContent_Declare(
-  catch
-  GIT_REPOSITORY https://github.com/catchorg/Catch2
-  GIT_TAG        v2.5.0
-)
+fetchcontent_declare(catch
+                     GIT_REPOSITORY
+                     https://github.com/catchorg/Catch2
+                     GIT_TAG
+                     v2.5.0)
 
-FetchContent_GetProperties(catch)
+fetchcontent_getproperties(catch)
 if(NOT catch_POPULATED)
-  FetchContent_Populate(catch)
+  fetchcontent_populate(catch)
   message(STATUS "Catch source dir: ${catch_SOURCE_DIR}")
   message(STATUS "Catch binary dir: ${catch_BINARY_DIR}")
   add_subdirectory(${catch_SOURCE_DIR} ${catch_BINARY_DIR})
