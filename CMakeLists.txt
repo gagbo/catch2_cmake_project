@@ -7,7 +7,15 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_CXX_FLAGS "-pipe -Wpedantic -Wshadow -Wconversion \
+-Wsign-conversion -Wall -Wextra -fexceptions")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3 -D_FORTIFY_SOURCE=3 -DNDEBUG")
+set(CMAKE_CXX_FLAGS_MINSIZEREL "-Os -D_FORTIFY_SOURCE=2 -DNDEBUG")
+set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -D_FORTIFY_SOURCE=2 -g -DNDEBUG")
+set(CMAKE_CXX_FLAGS_DEBUG "-O3 -Og -g -fsanitize=address -fno-omit-frame-pointer")
+set(CMAKE_CXX_FLAGS_COVERAGE "-O3 -Og -g -fprofile-arcs -ftest-coverage")
+set(CMAKE_CXX_LINKER_FLAGS_DEBUG "-lasan")
+set(CMAKE_CXX_LINKER_FLAGS_COVERAGE "-fprofile-arcs -ftest-coverage")
 
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
